@@ -5,3 +5,4 @@ interface User {
 }
 
 export const currentUser = writable<User | undefined>();
+export const open = writable(false);

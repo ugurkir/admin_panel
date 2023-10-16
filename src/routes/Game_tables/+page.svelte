@@ -13,4 +13,6 @@
 	};
 </script>
 
-<Table source={tableSimple} />
+<div class="h-full flex flex-col">
+	<div class="flex p-4"><Table source={tableSimple} /></div>
+</div>

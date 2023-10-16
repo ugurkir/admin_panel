@@ -1,18 +1,17 @@
 [
-    {
-      "id": 1,
-      "name": "sinan",
-      "email": "dsdsa"
-    },
-    {
-      "id": 2,
-      "name": "ali",
-      "email": "dsdsdsds"
-    },
-    {
-      "id": 3,
-      "name": "ahmet",
-      "email": "cxzcxzc"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "sinan",
+    "email": "dsdsa"
+  },
+  {
+    "id": 2,
+    "name": "ali",
+    "email": "dsdsdsds"
+  },
+  {
+    "id": 3,
+    "name": "ahmet",
+    "email": "cxzcxzc"
+  }
+]
