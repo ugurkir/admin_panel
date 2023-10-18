@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "password": "dsdsa",
+    "is_admin": false,
+    "permission": [
+      "ds",
+      "dasdsa"
+    ],
+    "theme": "modern",
+    "group": "ds"
+  },
+  {
+    "id": "2",
+    "password": "dsdsa",
+    "is_admin": false,
+    "permission": [
+      "ds",
+      "gfgfg"
+    ],
+    "theme": "skeleton",
+    "group": "ds"
+  },
+  {
+    "id": "3",
+    "password": "dsdsa",
+    "is_admin": false,
+    "permission": [
+      "ds",
+      "787"
+    ],
+    "theme": "crimson",
+    "group": "ds"
+  }
+]

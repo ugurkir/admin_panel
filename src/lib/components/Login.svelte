@@ -1,24 +1,44 @@
 <script lang="ts">
 	import { currentUser } from '../store';
 	import { Toast, getToastStore } from '@skeletonlabs/skeleton';
-
+	import users from '$lib/data/userssss.json';
+	import { comboboxValue } from '$lib/store';
+	import { onMount } from 'svelte';
 	const toastStore = getToastStore();
 
+	onMount(() => {
+		comboboxValue.subscribe((v) => {
+			document.body.dataset.theme = v;
+		});
+	});
 	let username = '';
 	let password = '';
 
 	function handleSubmit() {
-		if (username === 'admin' && password === 'admin') {
-			currentUser.set({ id: username });
-			toastStore.clear();
-		} else {
-			toastStore.clear();
-			toastStore.trigger({
-				message: 'Gecersiz parola!',
-				background: 'variant-filled-error',
-				autohide: false,
-				hoverable: true
-			});
+		for (let i = 0; i < users.length; i++) {
+			const element = users[i];
+			console.log(element);
+			if (username == element.id && password == element.password) {
+				currentUser.set({
+					id: element.id,
+					password: element.password,
+					is_admin: element.is_admin,
+					permissions: element.permission,
+					theme: element.theme,
+					group: element.group
+				});
+				toastStore.clear();
+				comboboxValue.set(element.theme);
+				break;
+			} else {
+				toastStore.clear();
+				toastStore.trigger({
+					message: 'Gecersiz parola!',
+					background: 'variant-filled-error',
+					autohide: false,
+					hoverable: true
+				});
+			}
 		}
 	}
 </script>

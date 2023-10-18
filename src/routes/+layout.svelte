@@ -19,6 +19,7 @@
 	import { Hamburger } from 'svelte-hamburgers';
 	import { fade } from 'svelte/transition';
 	import { open } from '$lib/store';
+	import PopupContainer from '$lib/components/PopupContainer.svelte';
 </script>
 
 <Toast />
@@ -26,7 +27,7 @@
 	<AppShell
 		slotSidebarLeft={$open
 			? 'bg-surface-500/5 w-56 transition-all duration-700 scale-100'
-			: ' w-10 duration-700'}
+			: 'w-0 duration-700'}
 		slotHeader="bg-surface-900/70"
 	>
 		<Header slot="header" />
@@ -40,3 +41,4 @@
 		<Login />
 	</AppShell>
 {/if}
+<PopupContainer />

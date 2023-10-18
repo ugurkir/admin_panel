@@ -1,20 +1,13 @@
 <script lang="ts">
-	import { currentUser } from '$lib/store';
-	import { open } from '$lib/store';
+	import { comboboxValue, currentUser, open } from '$lib/store';
 	import { Hamburger } from 'svelte-hamburgers';
 	function logOut() {
 		currentUser.set(undefined);
-	}
-
-	function toggle() {
-		open.update((n) => !n);
+		comboboxValue.set('skeleton');
 	}
 </script>
 
-<div class="h-full flex">
-	<button on:click={toggle}>
-		<Hamburger open={$open} />
-	</button>
+<div class="h-full">
 	{#if $open}
 		<nav class="list-nav h-full">
 			<ul class="flex flex-col h-full">
