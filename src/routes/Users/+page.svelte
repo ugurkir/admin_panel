@@ -1,24 +1,18 @@
 <script lang="ts">
-	import {
-		type TableSource,
-		tableMapperValues,
-		Table,
-		Accordion,
-		AccordionItem
-	} from '@skeletonlabs/skeleton';
 	import { users } from '$lib/store';
-
-	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { openPopup } from '$lib/components/PopupContainer.svelte';
 	import { currentUser } from '$lib/store';
 	import AddUser from '$lib/components/AddUser.svelte';
 	import DellUser from '$lib/components/DellUser.svelte';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
+	import { listUsers } from '$lib';
+	import { onMount } from 'svelte';
 	function toggle() {
 		alert('aaaa');
 	}
 	let is_admin: boolean = false;
 	let filter = '';
+
 	$: filteredUsers = $users.filter((u) => {
 		if (!filter) {
 			return true;
@@ -27,54 +21,63 @@
 	});
 </script>
 
-<div class="card p-4 m-2">
-	<div class="flex gap-2 justify-between my-3">
-		<div>
-			<input type="text" class="input" placeholder="filter" bind:value={filter} />
-		</div>
-		<button
-			class="btn card-hover bg-surface-500"
-			on:click={() => {
-				openPopup.set([AddUser, {}]);
-			}}>add user</button
-		>
-	</div>
-	<div class="flex m-1 card card-hover p-2 text-center gap-2 flex-wrap capitalize font-bold">
-		<div class="grow border-white/10 rounded-lg border">id</div>
-		<div class="grow border-white/10 rounded-lg border">group</div>
-		<div class="grow border-white/10 rounded-lg border">permissions</div>
-		<div class="grow border-white/10 rounded-lg border">theme</div>
-		<div class="grow border-white/10 rounded-lg border">is admin</div>
-		<div class="grow border-white/10 rounded-lg border">actions</div>
-	</div>
-	{#each filteredUsers as item}
-		<div
-			class="flex m-1 flex-wrap card card-hover p-2 text-center justify-center gap-2 items-center"
-		>
-			<div class="grow border border-white/10 rounded-lg">{item.id}</div>
-			<div class="grow border border-white/10 rounded-lg">{item.group}</div>
-			<div class="grow border border-white/10 rounded-lg">{item.permissions}</div>
-			<div class="grow border border-white/10 rounded-lg">{item.theme}</div>
-			<SlideToggle name="slide" checked={item.is_admin} disabled />
-			<div>
+<div class="flex h-full m-2">
+	<!-- Responsive Container (recommended) -->
+	<div class="table-container">
+		<div class="card grow w-full flex p-2 justify-end rounded-sm">
+			<div class="flex justify-between grow">
+				<div class="">
+					<input type="text" class="input" placeholder="filter" bind:value={filter} />
+				</div>
 				<button
-					class="btn bg-secondary-500"
+					class="btn card-hover bg-surface-500"
 					on:click={() => {
-						$openPopup = [AddUser, { selectedUser: item }];
-						console.log(item.group);
-					}}
+						openPopup.set([AddUser, {}]);
+					}}>add user</button
 				>
-					🖊️
-				</button>
-				<button
-					class="btn bg-error-500 w-2"
-					on:click={() => {
-						openPopup.set([DellUser, { uid: item.id }]);
-					}}
-				>
-					🗑️
-				</button>
 			</div>
 		</div>
-	{/each}
+		<!-- Native Table Element -->
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Group</th>
+					<th>Permissions</th>
+					<th>Theme</th>
+					<th>Is admin</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each filteredUsers as row, i}
+					<tr>
+						<td>{row.id}</td>
+						<td>{row.group}</td>
+						<td>{row.permissions}</td>
+						<td>{row.theme}</td>
+						<td><SlideToggle name="slide" checked={row.is_admin} disabled /></td>
+						<td>
+							<button
+								class="btn bg-secondary-500"
+								on:click={() => {
+									$openPopup = [AddUser, { selectedUser: row }];
+								}}
+							>
+								🖊️
+							</button>
+							<button
+								class="btn bg-error-500 w-2"
+								on:click={() => {
+									openPopup.set([DellUser, { uid: row.id }]);
+								}}
+							>
+								🗑️
+							</button>
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
 </div>

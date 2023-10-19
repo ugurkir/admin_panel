@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { addUsers } from '$lib/api';
 	import type { User } from '$lib/store';
 	import { users } from '$lib/store';
 	import { openPopup } from './PopupContainer.svelte';
@@ -83,6 +84,7 @@
 		<button
 			class="btn bg-primary-500"
 			on:click={() => {
+				addUsers(selectedUser);
 				$users = [selectedUser, ...$users.filter((u) => u.id !== selectedUser.id)];
 				console.log($users);
 				$openPopup = null;

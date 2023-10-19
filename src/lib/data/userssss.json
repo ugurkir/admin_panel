@@ -3,10 +3,7 @@
     "id": "1",
     "password": "dsdsa",
     "is_admin": false,
-    "permission": [
-      "ds",
-      "dasdsa"
-    ],
+    "permission": 1,
     "theme": "modern",
     "group": "ds"
   },
@@ -14,10 +11,7 @@
     "id": "2",
     "password": "dsdsa",
     "is_admin": false,
-    "permission": [
-      "ds",
-      "gfgfg"
-    ],
+    "permission": 2,
     "theme": "skeleton",
     "group": "ds"
   },
@@ -25,10 +19,7 @@
     "id": "3",
     "password": "dsdsa",
     "is_admin": false,
-    "permission": [
-      "ds",
-      "787"
-    ],
+    "permission": 3,
     "theme": "crimson",
     "group": "ds"
   }
