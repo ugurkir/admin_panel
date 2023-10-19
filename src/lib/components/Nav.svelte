@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { comboboxValue, currentUser, open } from '$lib/store';
-	import { Hamburger } from 'svelte-hamburgers';
 	function logOut() {
 		currentUser.set(undefined);
 		comboboxValue.set('skeleton');

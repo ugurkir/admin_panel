@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { currentUser, users } from '../store';
-	import { Toast, getToastStore } from '@skeletonlabs/skeleton';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 	import { comboboxValue } from '$lib/store';
 	import { onMount } from 'svelte';
 	import { listUsers, login } from '$lib/api';

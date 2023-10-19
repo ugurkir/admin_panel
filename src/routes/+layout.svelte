@@ -6,18 +6,13 @@
 	import { focusTrap } from '@skeletonlabs/skeleton';
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
-	import { AppBar, AppShell, storePopup } from '@skeletonlabs/skeleton';
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { AppShell, storePopup } from '@skeletonlabs/skeleton';
 	import Login from '../lib/components/Login.svelte';
 	import Nav from '../lib/components/Nav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 	import { currentUser } from '$lib/store';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
-	import { Hamburger } from 'svelte-hamburgers';
-	import { fade } from 'svelte/transition';
 	import { open } from '$lib/store';
 	import PopupContainer from '$lib/components/PopupContainer.svelte';
 </script>

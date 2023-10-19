@@ -1,16 +1,10 @@
 <script lang="ts">
 	import { users } from '$lib/store';
 	import { openPopup } from '$lib/components/PopupContainer.svelte';
-	import { currentUser } from '$lib/store';
 	import AddUser from '$lib/components/AddUser.svelte';
 	import DellUser from '$lib/components/DellUser.svelte';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
-	import { listUsers } from '$lib';
-	import { onMount } from 'svelte';
-	function toggle() {
-		alert('aaaa');
-	}
-	let is_admin: boolean = false;
+
 	let filter = '';
 
 	$: filteredUsers = $users.filter((u) => {

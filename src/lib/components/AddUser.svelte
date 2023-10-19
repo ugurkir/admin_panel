@@ -13,7 +13,6 @@
 		theme: '',
 		group: ''
 	};
-	// let user: User = {};
 	let userPermissions: string[] = [];
 	let selectedChips: { [index: string]: boolean } = {};
 	let userId = selectedUser.id;
@@ -86,7 +85,6 @@
 			on:click={() => {
 				addUsers(selectedUser);
 				$users = [selectedUser, ...$users.filter((u) => u.id !== selectedUser.id)];
-				console.log($users);
 				$openPopup = null;
 			}}
 		>

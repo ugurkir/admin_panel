@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { ListBox, ListBoxItem, popup, type PopupSettings } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
 	import { comboboxValue } from '$lib/store';
 
 	onMount(() => {
