@@ -4,8 +4,11 @@
 	import AddUser from '$lib/components/AddUser.svelte';
 	import DellUser from '$lib/components/DellUser.svelte';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
+	import { endPoint } from '$lib';
 
 	let filter = '';
+
+	endPoint('default', '/users', 10, 'default');
 
 	$: filteredUsers = $users.filter((u) => {
 		if (!filter) {

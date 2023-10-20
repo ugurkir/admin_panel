@@ -20,11 +20,19 @@ export interface ApiError {
     error?: string
 }
 
+export const endPoint = (name: string, url: string, max_latency: number, group: string): ApiResponse<any> =>
+    post('/endpoints', {
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `name=${name}&url=${url}&max_latency=${max_latency}&group=${group}`
+    })
+
 export const addUsers = (User: User): ApiResponse<User[]> =>
     post(`/users`, {
         headers: {
             accept: 'application/json; charset=utf-8',
-            ContentType: 'application/x-www-form-urlencoded'
+            "Content-Type": 'application/x-www-form-urlencoded'
         },
         body: `id=${User.id}&group=${User.group}&password=${User.password}&is_admin=${User.is_admin}&theme=${User.theme}&permissions=${User.permissions}`
     })

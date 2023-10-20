@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { listUsers, login } from '$lib/api';
 	const toastStore = getToastStore();
-
+	$comboboxValue = 'skeleton';
 	onMount(() => {
 		comboboxValue.subscribe((v) => {
 			document.body.dataset.theme = v;
@@ -22,7 +22,7 @@
 			let loggedUser = await login(username, password);
 			if (!loggedUser?.error) {
 				$currentUser = loggedUser;
-
+				$comboboxValue = loggedUser.theme;
 				const userResponse = await listUsers();
 				if (!userResponse?.error) {
 					$users = userResponse;

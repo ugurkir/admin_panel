@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ListBox, ListBoxItem, popup, type PopupSettings } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
-	import { comboboxValue } from '$lib/store';
+	import { comboboxValue, currentUser } from '$lib/store';
 
 	onMount(() => {
 		comboboxValue.subscribe((v) => {
